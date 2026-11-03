@@ -1,0 +1,6 @@
+{
+  "name": "نظام إدارة السكرتارية - الشركة المصرية الهندسية للمقاولات",
+  "description": "لوحة تحكم شاملة لإدارة السكرتارية، المراسلات، التعاميم، المهام، الاجتماعات، والزيارات في الشركة المصرية الهندسية للمقاولات (EEC).",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

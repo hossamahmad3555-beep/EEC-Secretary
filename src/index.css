@@ -1,0 +1,112 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-sans: 'Cairo', 'Tajawal', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    direction: rtl;
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Custom subtle scrollbars for tables and sidebars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(107, 33, 168, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(126, 34, 206, 0.3);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(126, 34, 206, 0.5);
+}
+
+/* ==========================================================================
+   تخصيص تنسيق الطباعة المباشرة (Print Media Query) للأرشفة والمستندات الورقية
+   يزيل القوائم الجانبية وأشرطة الأدوات التفاعلية ويوفر مستنداً ورقياً رسمياً نظيفاً
+   ========================================================================== */
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 12mm;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    font-family: 'Cairo', 'Tajawal', sans-serif !important;
+    direction: rtl !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* إخفاء القوائم الجانبية، الترويسة التفاعلية، أزرار الإجراءات، والإشعارات المنبثقة عند الطباعة */
+  aside,
+  header,
+  .no-print {
+    display: none !important;
+  }
+
+  /* إظهار الترويسة والتذييل الرسميين المخصصين للنسخة الورقية فقط */
+  .print-only {
+    display: block !important;
+  }
+
+  .print-only-flex {
+    display: flex !important;
+  }
+
+  /* ضبط الحاوية الرئيسية لتشغل كامل عرض الورقة بدون هوامش جانبية */
+  main {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+  }
+
+  /* تنظيف البطاقات والجداول للطباعة الورقية الواضحة */
+  .print-clean-card {
+    background: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    box-shadow: none !important;
+    border-radius: 8px !important;
+    color: #0f172a !important;
+    break-inside: avoid;
+  }
+
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    font-size: 11pt !important;
+    color: #0f172a !important;
+  }
+
+  thead tr {
+    background-color: #f3e8ff !important;
+    color: #3b0764 !important;
+  }
+
+  th,
+  td {
+    border: 1px solid #cbd5e1 !important;
+    padding: 8px 10px !important;
+    color: #0f172a !important;
+  }
+}
